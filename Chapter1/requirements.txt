@@ -1,0 +1,9 @@
+# Direct SDKs
+openai
+google-genai
+ollama
+
+# Utilities
+python-dotenv                 
+pydantic               
+tiktoken                      
