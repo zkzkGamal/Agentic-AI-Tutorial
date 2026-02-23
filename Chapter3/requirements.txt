@@ -1,0 +1,19 @@
+# Direct SDKs
+openai
+google-genai
+ollama
+
+# Utilities
+python-dotenv                 
+pydantic               
+tiktoken                      
+
+#langchain
+langchain
+langchain-openai
+langchain-google-genai
+langchain-ollama
+langchain-community
+langchain-core
+sentence-transformers
+transformers

@@ -91,11 +91,13 @@ Whether you're a beginner taking your first steps into AI or an intermediate dev
 - [x] Custom LCEL Chains — parallel execution with `RunnableParallel` & `RunnableLambda`
 - [Read Chapter 2 Guide](./Chapter2/Chapter2.md)
 
-### Chapter 3: Memory and Context
 
-- ConversationBufferMemory
-- Entity Memory
-- Vector Stores and RAG (Retrieval-Augmented Generation)
+### Chapter 3: Memory, Entity Memory & RAG ✅
+
+- [x] ConversationBufferMemory — full conversation history for chatbots
+- [x] Entity Memory — extract and track key facts/entities
+- [x] Vector Stores and RAG — retrieval-augmented generation with Chroma and embeddings
+- [Read Chapter 3 Guide](./Chapter3/Chapter3.md)
 
 ### Chapter 4: Introduction to Agents
 
