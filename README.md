@@ -89,7 +89,7 @@ Whether you're a beginner taking your first steps into AI or an intermediate dev
 - [x] Sequential Chains — multi-step pipelines
 - [x] Router Chains — intent-based branching with `RunnableBranch`
 - [x] Custom LCEL Chains — parallel execution with `RunnableParallel` & `RunnableLambda`
-- [Read Chapter 2 Guide](./chapter2/Chapter2.md)
+- [Read Chapter 2 Guide](./Chapter2/Chapter2.md)
 
 ### Chapter 3: Memory and Context
 
