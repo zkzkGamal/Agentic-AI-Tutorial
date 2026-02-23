@@ -51,12 +51,19 @@ Whether you're a beginner taking your first steps into AI or an intermediate dev
    pip install -r requirements.txt
    ```
 
-4. **Set up your API keys:**
-   Create a `.env` file in the `Chapter1` directory (or copy the provided `.env.example`):
+4. **Set up your API keys:**  
+   Each chapter has its own `.env` file. For example:
+
    ```bash
+   # Chapter 1
    cp Chapter1/.env.example Chapter1/.env
+
+   # Chapter 2
+   cp chapter2/.env.example chapter2/.env
    ```
-   Edit `.env` and add your API keys:
+
+   Edit the `.env` file and add your API keys:
+
    ```env
    OPENAI_API_KEY="your_openai_key"
    GOOGLE_API_KEY="your_google_key"
@@ -73,11 +80,16 @@ Whether you're a beginner taking your first steps into AI or an intermediate dev
 - [x] Handling responses and streaming
 - [Read Chapter 1 Summary](./Chapter1/Chapter1.md)
 
-### Chapter 2: Building Chains
+### Chapter 2: LangChain Chains, Memory & Tools ✅
 
-- Sequential Chains
-- Router Chains
-- Custom Chains with LangChain Expression Language (LCEL)
+- [x] `ChatPromptTemplate` — reusable, parameterised prompts
+- [x] LCEL pipe (`|`) — connecting prompt → LLM → parser
+- [x] Memory with `RunnableWithMessageHistory` — session-based chat history
+- [x] Tool calling with `@tool` decorator and `bind_tools`
+- [x] Sequential Chains — multi-step pipelines
+- [x] Router Chains — intent-based branching with `RunnableBranch`
+- [x] Custom LCEL Chains — parallel execution with `RunnableParallel` & `RunnableLambda`
+- [Read Chapter 2 Guide](./chapter2/Chapter2.md)
 
 ### Chapter 3: Memory and Context
 
