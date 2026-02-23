@@ -19,3 +19,8 @@ langchain-core
 #transformers
 transformers
 sentence-transformers
+
+
+#langgraph
+langgraph
+graphviz
