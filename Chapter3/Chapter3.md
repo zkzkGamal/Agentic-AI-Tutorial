@@ -1,175 +1,107 @@
-# Chapter 3: Memory, Entity Memory & RAG in LangChain
+# Chapter 3: Advanced Memory & RAG
 
-> **Course**: Agentic AI Tutorial  
-> **Chapter**: 3 of 6  
-> **Prerequisites**: Chapter 2 — LangChain Chains, Memory & Tools  
-> **Notebook**: [`chapter3-code.ipynb`](./chapter3-code.ipynb)
+In Chapter 2, we mastered orchestration. Now, we dive into the most critical part of production AI: **Knowledge & Context**. This chapter covers how to give your agent a custom memory and access to private documents.
 
 ---
 
-## 🎯 Learning Objectives
+## 🎯 Lesson Objectives
 
-By the end of this chapter you will be able to:
+By the end of this chapter, you will be able to:
 
-- Understand the difference between **stateless** and **stateful** LLM conversations
-- Use **`ConversationBufferMemory`** to preserve the full conversation history across turns
-- Use **`ConversationEntityMemory`** to automatically extract and track named entities (people, places, things)
-- Build a **RAG (Retrieval-Augmented Generation)** pipeline using a **Chroma vector store** and **HuggingFace embeddings**
-- Apply all three strategies with both **Ollama (local)** and **OpenAI (cloud)** models
+- Understand the difference between **Short-term** (Buffer) and **Deep** (Entity) memory.
+- Build a **RAG (Retrieval-Augmented Generation)** pipeline.
+- Use **Vector Stores** (Chroma) to store and retrieve private information.
+- Use local **HuggingFace Embeddings** for free, privacy-focused vector search.
 
 ---
 
-## 1. Environment Setup
+## 🧠 Memory Strategies
 
-### 1.1 Create and Activate a Virtual Environment
+### 1. ConversationBufferMemory
+
+The simplest form of memory. It stores the entire chat transcript.
+
+- **Pros**: Full context, easy to implement.
+- **Cons**: Grows infinitely, eventually hits model token limits.
+
+### 2. ConversationEntityMemory
+
+A more intelligent approach. It uses an LLM to extract and track specific facts about people, places, and things (entities).
+
+- **Pros**: Focuses on key facts, stays relevant over long interactions.
+- **Cons**: Requires additional LLM calls for extraction.
+
+---
+
+## 🏗️ RAG: Retrieval-Augmented Generation
+
+RAG is how we give LLMs access to data they weren't trained on (like your personal notes or company docs).
+
+### The RAG Pipeline Architecture:
+
+1. **Load**: Import text from PDF, CSV, or plain text.
+2. **Split**: Break long text into smaller "chunks".
+3. **Embed**: Convert text chunks into numerical vectors.
+4. **Store**: Save vectors in a **Vector Store** (like Chroma).
+5. **Retrieve**: When the user asks a question, find the most similar chunks.
+6. **Generate**: Send the chunks + the question to the LLM.
+
+---
+
+## 💻 Tech Implementation
+
+### 🛠️ Environment Setup
 
 ```bash
-# Linux / macOS
-python3 -m venv chapter_env
-source chapter_env/bin/activate
-
-# Windows
-python -m venv chapter_env
-chapter_env\Scripts\activate
+pip install langchain-chroma sentence-transformers transformers chromadb
 ```
 
-### 1.2 Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-New packages added in this chapter on top of Chapter 2:
-
-| Package                 | Purpose                                                   |
-| ----------------------- | --------------------------------------------------------- |
-| `langchain-classic`     | Legacy chain classes (`ConversationChain`, `RetrievalQA`) |
-| `langchain-chroma`      | Chroma vector store integration                           |
-| `sentence-transformers` | Local HuggingFace embedding model                         |
-| `transformers`          | HuggingFace model backbone                                |
-| `chromadb`              | Chroma vector database engine                             |
-
-### 1.3 Configure API Keys
-
-Create a `.env` file in the `Chapter3/` directory:
-
-```env
-GOOGLE_API_KEY="your_google_key"
-OPENAI_API_KEY="your_openai_key"
-```
-
----
-
-## 2. LangChain Setup and Imports
+### 🤖 Implementing RAG
 
 ```python
-from langchain_classic.chains.conversation.base import ConversationChain
-from langchain_classic.chains.retrieval_qa.base import RetrievalQA
-from langchain_classic.text_splitter import CharacterTextSplitter
-from langchain_classic.memory import ConversationBufferMemory, ConversationEntityMemory
-from langchain_classic.memory.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
-from langchain_community.llms.openai import OpenAI
-from langchain_community.llms.ollama import Ollama
 from langchain_chroma import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_core.prompts.chat import PromptTemplate
-import os, dotenv
+from langchain_classic.text_splitter import CharacterTextSplitter
 
-dotenv.load_dotenv()
-google_api_key = os.getenv("GOOGLE_API_KEY") or ""
-openai_api_key = os.getenv("OPENAI_API_KEY") or ""
+# 1. Prepare Embeddings (Local & Free)
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+# 2. Text Splitting
+text = "Agentic AI is the future. It uses reasoning to solve tasks..."
+text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=0)
+docs = text_splitter.create_documents([text])
+
+# 3. Create Vector Store
+vector_store = Chroma.from_documents(docs, embeddings)
+
+# 4. Retrieval
+query = "What is the future?"
+results = vector_store.similarity_search(query)
+print(results[0].page_content)
 ```
-
-### Architecture Overview
-
-```
-LangChain Chapter 3
-├── Memory
-│   ├── ConversationBufferMemory  → stores full chat log as plain text
-│   └── ConversationEntityMemory  → extracts and stores named entities via LLM
-└── RAG Pipeline
-    ├── HuggingFaceEmbeddings     → converts text → vectors (locally, free)
-    ├── Chroma                    → vector database: store and retrieve by similarity
-    └── RetrievalQA               → retrieves matching docs, feeds them to LLM
-```
-
-> **Tip**: Make sure Ollama is running locally before executing Ollama cells.  
-> Download from [ollama.com](https://ollama.com) and pull your model:  
-> `ollama pull gemma3:270m`
 
 ---
 
-## 3. ConversationBufferMemory
+## ⚖️ When to use RAG vs. Memory?
 
-### What Is It?
-
-`ConversationBufferMemory` stores the **entire conversation history** as a plain-text buffer. On every new call the full buffer is prepended to the prompt, so the LLM always has the complete context of what was said.
-
-```
-Turn 1:  Human: "My name is Zkzk"
-         → Buffer: ["Human: My name is Zkzk", "AI: Hi Zkzk!"]
-
-Turn 2:  Human: "What's my name?"
-         → LLM receives the buffer above + new question → answers correctly
-```
-
-**When to use**: Chat applications that need full recall across all turns.  
-**Trade-off**: Buffer grows indefinitely. For long conversations you will eventually hit the model's context window limit — see Chapter's exercises for how to handle this.
+| Feature       | Memory                     | RAG                         |
+| :------------ | :------------------------- | :-------------------------- |
+| **Duration**  | Single user session        | Persistent across all users |
+| **Data Type** | User-specific chat history | Large databases/documents   |
+| **Cost**      | Low                        | Higher (Vector DB storage)  |
 
 ---
 
-### 3.1 ConversationBufferMemory with Ollama
+## 🏁 Summary
 
-```python
-llm = Ollama(
-    model="gemma3:270m",
-    timeout=30,
-    temperature=0.7,
-)
+You have now completed the intermediate core of the tutorial! You have a powerful toolkit:
 
-memory = ConversationBufferMemory()
-conversation = ConversationChain(llm=llm, memory=memory)
-```
+1. **Chapter 1**: Raw AI calls.
+2. **Chapter 2**: Orchestration & Tools.
+3. **Chapter 3**: Custom Knowledge & Context.
 
-> `ConversationChain` automatically reads from and writes to `memory` on every `.predict()` call — no extra wiring needed.
+**In Chapter 4**, we will finally put it all together to build **Autonomous Agents** that can use these tools and knowledge to solve real-world problems.
 
-**Turn 1 — introduce yourself:**
+---
 
-```python
-response1 = conversation.predict(
-    input="Hi, I'm Zkzk. What's the capital of Egypt? And can you tell me a joke?"
-)
-print(response1)
-```
-
-**Output**:
-
-```
-The capital of Egypt is Cairo.
-```
-
-**Turn 2 — test that the model remembers:**
-
-```python
-response2 = conversation.predict(input="What's my name?")
-print(response2)
-```
-
-**Output**:
-
-```
-Your name is Zkzk!
-```
-
-**Inspect the buffer contents:**
-
-```python
-print(memory.buffer)
-```
-
-**Output**:
-
-```
-Human: Hi, I'm Zkzk. What's the capital of Egypt? And can you tell me a joke?
-AI: The capital of Egypt is Cairo.
-```
+_Created with ❤️ by the Agentic AI Team_
