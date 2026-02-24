@@ -150,4 +150,4 @@ In this chapter, we learned how to "talk" to AI programmatically. However, calli
 
 ---
 
-_Created with ❤️ by the Agentic AI Team_
+_Created with ❤️ by the Zkzk_

@@ -24,3 +24,6 @@ sentence-transformers
 #langgraph
 langgraph
 graphviz
+
+#web search
+ddgs

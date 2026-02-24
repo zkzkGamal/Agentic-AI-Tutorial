@@ -26,9 +26,8 @@ Traditional AI responds to prompts. **Agentic AI** takes it a step further:
 | **[Chapter 1](./Chapter1/Chapter1.md)** | 🟢 Beginner     | LLM Fundamentals, Providers (Ollama/OpenAI/Gemini) | ✅ Complete |
 | **[Chapter 2](./Chapter2/Chapter2.md)** | 🔵 Intermediate | LangChain Orchestration, LCEL, Chains & Tools      | ✅ Complete |
 | **[Chapter 3](./Chapter3/Chapter3.md)** | 🔵 Intermediate | Memory Systems, Entity Tracking & RAG              | ✅ Complete |
-| **Chapter 4**                           | 🟠 Advanced     | ReAct Pattern & Basic Agents                       | 🚧 Upcoming |
-| **Chapter 5**                           | 🔴 Expert       | Multi-Agent Systems with LangGraph                 | 📅 Planned  |
-| **Chapter 6**                           | 💼 Real-World   | Production Deployment & Case Studies               | 📅 Planned  |
+| **[Chapter 4](./Chapter4/Chapter4.md)** | 🟠 Advanced     | Autonomous Agents & LangGraph Patterns             | ✅ Complete |
+| **Chapter 5**                           | 🔴 Expert       | Production Deployment & Case Studies               | 📅 Planned  |
 
 ---
 
@@ -110,6 +109,13 @@ cp Chapter1/.env.example Chapter1/.env
 - `ConversationBufferMemory` for full history.
 - `ConversationEntityMemory` for fact extraction.
 - **RAG (Retrieval-Augmented Generation)** with local vector stores.
+
+### [Chapter 4: Autonomous Agents](./Chapter4/Chapter4.md)
+
+- LangGraph **StateGraph** fundamentals.
+- **ReAct**, **Router**, and **Sequential Pipeline** patterns.
+- **Multi-Agent Collaboration** and **Self-Refine** loops.
+- **Human-in-the-Loop** for production safety.
 
 ---
 

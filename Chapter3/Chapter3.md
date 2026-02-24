@@ -104,4 +104,4 @@ You have now completed the intermediate core of the tutorial! You have a powerfu
 
 ---
 
-_Created with ❤️ by the Agentic AI Team_
+_Created with ❤️ by the Zkzk_
