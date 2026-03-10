@@ -13,6 +13,7 @@ Our agent employs a multi-node **StateGraph** design to efficiently process diff
 ### 📊 The LangGraph Flow (Mermaid)
 
 ```mermaid
+```mermaid
 stateDiagram-v2
     direction TB
     
