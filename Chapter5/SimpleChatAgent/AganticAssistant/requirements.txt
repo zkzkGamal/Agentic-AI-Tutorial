@@ -1,0 +1,34 @@
+# mcp server
+mcp[cli]
+ollama
+httpx
+
+## Direct SDKs
+openai
+google-genai
+ollama
+
+# Utilities
+python-dotenv                 
+pydantic               
+tiktoken                      
+
+#langchain
+langchain
+langchain-openai
+langchain-google-genai
+langchain-ollama
+langchain-community
+langchain-core
+
+#transformers
+transformers
+sentence-transformers
+
+
+#langgraph
+langgraph
+graphviz
+
+#web search
+ddgs

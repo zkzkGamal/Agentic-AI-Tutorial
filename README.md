@@ -27,14 +27,15 @@ Traditional AI responds to prompts. **Agentic AI** takes it a step further:
 | **[Chapter 2](./Chapter2/Chapter2.md)** | 🔵 Intermediate | LangChain Orchestration, LCEL, Chains & Tools      | ✅ Complete |
 | **[Chapter 3](./Chapter3/Chapter3.md)** | 🔵 Intermediate | Memory Systems, Entity Tracking & RAG              | ✅ Complete |
 | **[Chapter 4](./Chapter4/Chapter4.md)** | 🟠 Advanced     | Autonomous Agents & LangGraph Patterns             | ✅ Complete |
-| **Chapter 5**                           | 🔴 Expert       | Production Deployment & Case Studies               | 📅 Planned  |
+| **[Chapter 5](./Chapter5/SimpleChatAgent/README.md)** | 🔴 Expert       | Multi-Node Agents & MCP Server Integration         | ✅ Complete |
 
 ---
 
 ## 🛠️ Core Tech Stack
 
 - **Frameworks**: [LangChain](https://www.langchain.com/), [LangGraph](https://langchain-ai.github.io/langgraph/)
-- **Models**: OpenAI (GPT-4o), Google Gemini (2.0 Flash), Ollama (Local Llama 3/Mistral)
+- **Protocols**: Model Context Protocol (MCP) by Anthropic
+- **Models**: OpenAI (GPT-4o, GPT-3.5), Google Gemini (2.0 Flash), Ollama (Local)
 - **Vector DB**: Chroma, FAISS
 - **Embeddings**: Sentence Transformers (HuggingFace)
 
@@ -116,6 +117,13 @@ cp Chapter1/.env.example Chapter1/.env
 - **ReAct**, **Router**, and **Sequential Pipeline** patterns.
 - **Multi-Agent Collaboration** and **Self-Refine** loops.
 - **Human-in-the-Loop** for production safety.
+
+### [Chapter 5: Multi-Node LangGraph & MCP](./Chapter5/SimpleChatAgent/README.md)
+
+- Building a decoupled architecture using the **Model Context Protocol (MCP)**.
+- Deploying a local FastMCP Server with Mail and Math tools.
+- Routing requests intelligently across multiple highly-specialized LangGraph nodes.
+- Handling multi-turn state cleanly between Router, Execution, and Summary nodes.
 
 ---
 
