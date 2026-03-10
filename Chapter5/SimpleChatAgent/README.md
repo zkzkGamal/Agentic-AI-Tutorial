@@ -13,38 +13,33 @@ Our agent employs a multi-node **StateGraph** design to efficiently process diff
 ### 📊 The LangGraph Flow (Mermaid)
 
 ```mermaid
-```mermaid
-stateDiagram-v2
-    direction TB
-    
-    %% Define styles
-    classDef router fill:#d4edda,stroke:#28a745,stroke-width:2px;
-    classDef execute fill:#cce5ff,stroke:#007bff,stroke-width:2px;
-    classDef summarize fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
-    classDef chat fill:#e2e3e5,stroke:#6c757d,stroke-width:2px;
-    classDef startend fill:#343a40,color:white,stroke-width:2px,border-radius:50%;
+graph TD
+    %% Style Definitions
+    classDef router fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#155724;
+    classDef execute fill:#cce5ff,stroke:#007bff,stroke-width:2px,color:#004085;
+    classDef summarize fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#856404;
+    classDef chat fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:#383d41;
+    classDef startend fill:#343a40,color:white,stroke-width:2px;
 
     %% Nodes
-    START((START)):::startend
-    END((END)):::startend
-    Router[Router Node<br/><i>LLM Classifier</i>]:::router
+    START([START]):::startend
+    END([END]):::startend
+    Router{Router Node<br/><i>LLM Classifier</i>}:::router
     Execute[Execute Node<br/><i>LangChain ReAct + MCP</i>]:::execute
     Summarize[Summarize Node<br/><i>LLM Formatter</i>]:::summarize
     Conversation[Conversation Node<br/><i>LLM Chitchat</i>]:::chat
 
-    %% Edges
-    START --> Router : User Input
+    %% Flow
+    START -->|User Input| Router
     
     %% Conditional Routing
-    Router --> Execute : Intent == 'math' | 'email'
-    Router --> Conversation : Intent == 'conversation'
+    Router -->|Intent: Tool Use| Execute
+    Router -->|Intent: Chat| Conversation
     
-    %% Execution Flow
-    Execute --> Summarize : Raw Tool Output (JSON)
-    Summarize --> END : Formatted Response
-    
-    %% Conversation Flow
-    Conversation --> END : Direct Response
+    %% Paths to End
+    Execute -->|Raw JSON| Summarize
+    Summarize --> END
+    Conversation --> END
 ```
 
 ### 🧠 Deep Dive: The Agentic Flow
