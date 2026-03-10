@@ -8,7 +8,7 @@ Welcome to **Chapter 5**, where we build a powerful, multi-node autonomous agent
 
 Our agent employs a multi-node **StateGraph** design to efficiently process different types of intents. This separates the "thinking" (routing) from the "doing" (execution), which is a core pattern in advanced Agentic AI.
 
-![Agent Architecture Graph](../graph.png)
+![Agent Architecture Graph](./graph.png)
 
 ### 📊 The LangGraph Flow (Mermaid)
 
