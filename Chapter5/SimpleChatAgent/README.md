@@ -87,13 +87,13 @@ This project consists of two main components:
 ### 1. Configure the Environment
 Copy the example environment files and fill in your credentials:
 ```bash
-cp Chapter5/SimpleChatAgent/McpServer/tools/.env.example Chapter5/SimpleChatAgent/McpServer/tools/.env
+cp Chapter5/SimpleChatAgent/McpServer/.env.example Chapter5/SimpleChatAgent/McpServer/.env
 cp Chapter5/SimpleChatAgent/AganticAssistant/.env.example Chapter5/SimpleChatAgent/AganticAssistant/.env
 ```
 
 **Required API Keys**:
 - `OPENAI_API_KEY` (in `AganticAssistant/.env`)
-- SMTP/IMAP Mail configuration (in `McpServer/tools/.env`)
+- SMTP/IMAP Mail configuration (in `McpServer/.env`)
 
 ### 2. Start the MCP Server
 In a new terminal window, start the FastMCP server which runs on `http://127.0.0.1:8000`:
