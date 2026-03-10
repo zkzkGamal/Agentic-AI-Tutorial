@@ -8,7 +8,7 @@ Welcome to **Chapter 5**, where we build a powerful, multi-node autonomous agent
 
 Our agent employs a multi-node **StateGraph** design to efficiently process different types of intents. This separates the "thinking" (routing) from the "doing" (execution), which is a core pattern in advanced Agentic AI.
 
-![Agent Architecture Graph](./graph.png)
+<img src="./graph.png" alt="Agent Architecture Graph" width="800"/>
 
 ### 📊 The LangGraph Flow (Mermaid)
 
@@ -113,22 +113,22 @@ python3 Chapter5/SimpleChatAgent/AganticAssistant/main.py
 
 ### 💬 General Conversation
 The agent can route general greetings directly to the conversation node.
-![Greeting Demo](./demo/simple_greating_message.png)
+<img src="./demo/simple_greating_message.png" alt="Greeting Demo" width="600"/>
 
 ### 🧮 Math Execution
 When asked a math question, the router directs it to the MCP server. 
-![Math Request](./demo/main_agent_add_request.png)
+<img src="./demo/main_agent_add_request.png" alt="Math Request" width="600"/>
 *(Server View)*:
-![MCP Math Execution](./demo/mcp_server_first_request.png)
+<img src="./demo/mcp_server_first_request.png" alt="MCP Math Execution" width="600"/>
 
 ### 📧 Email Management
 The agent can compose, send, and read emails securely via the MCP tools.
-![Send Mail Request](./demo/main_agent_send_mail_request.png)
+<img src="./demo/main_agent_send_mail_request.png" alt="Send Mail Request" width="600"/>
 *(Server View)*:
-![MCP Mail Execution](./demo/mcp_server_use_send_mail.png)
+<img src="./demo/mcp_server_use_send_mail.png" alt="MCP Mail Execution" width="600"/>
 
 Proof of delivery to a real inbox:
-![Inbox Verification](./demo/real_screan_from_inbox.png)
+<img src="./demo/real_screan_from_inbox.png" alt="Inbox Verification" width="600"/>
 
 ---
 
