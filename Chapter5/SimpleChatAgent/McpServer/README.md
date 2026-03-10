@@ -8,9 +8,9 @@ This directory contains the **Model Context Protocol (MCP)** server for Chapter 
 McpServer/
 ├── main.py                 # The server entry point (uvicorn & FastMCP)
 ├── server.py               # The MCP server instance config
+├── .env                    # Private credentials (not pushed to git!)
 └── tools/                  # The directory containing all MCP tools
     ├── __init__.py         # Tool registry/imports
-    ├── .env                # Private credentials (not pushed to git!)
     ├── emails/             # Email-specific capabilities
     │   ├── __init__.py
     │   ├── check_inbox.py
