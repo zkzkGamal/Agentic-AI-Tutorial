@@ -127,6 +127,19 @@ cp Chapter1/.env.example Chapter1/.env
 
 ---
 
+## 🔗 Related Repositories
+
+Explore more tutorials and tools by the same author:
+
+| Repository | Description |
+|---|---|
+| 🤖 [**Hands On AI Tutorials**](https://github.com/zkzkGamal/hands-on-ai-tutorial/) | A comprehensive, open-source AI tutorial covering ML Fundamentals (Regression, Classification, Clustering) and Deep Learning (NLP, CV) with practical code and mathematical intuition. |
+| ⚡ [**Concurrent LLM Serving**](https://github.com/zkzkGamal/concurrent-llm-serving) | Hands-on guide to serving Large Language Models efficiently at scale with concurrency |
+
+> These repositories complement this tutorial — once you've mastered the fundamentals here, explore agents and production LLM deployment next!
+
+---
+
 ## 🤝 Contributing
 
 We love contributions! Whether you're fixing a typo or adding a new agent pattern:
