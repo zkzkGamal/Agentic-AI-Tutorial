@@ -178,4 +178,12 @@ We love contributions! Whether you're fixing a typo or adding a new agent patter
 
 ---
 
+## 📖 Featured articles
+
+- [Build autonomous AI agents step by step — LangChain & LangGraph (2026)](https://dev.to/zkaria_gamal_3cddbbff21c8/build-autonomous-ai-agents-step-by-step-my-free-langchain-langgraph-tutorial-2026-edition-1b6)
+- [Building a production-ready agentic AI system with LangGraph and MCP](https://dev.to/zkaria_gamal_3cddbbff21c8/building-a-production-ready-agentic-ai-system-with-langgraph-and-mcp-4kfh)
+- [Personal blog](https://zkaria-gamal.vercel.app/post/35)
+
+---
+
 _Disclaimer: This tutorial is for educational purposes. Costs may apply for cloud LLM usage._
