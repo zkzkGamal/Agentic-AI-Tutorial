@@ -76,8 +76,16 @@ python3 -m venv venv
 source venv/bin/activate  # Linux/macOS
 # OR: venv\Scripts\activate  # Windows
 
-# Install Base Dependencies
+# Option A — Install everything (all chapters) in one shot:
 pip install -r requirements.txt
+
+# Option B — Install only what a specific chapter needs:
+pip install -r Chapter1/requirements.txt   # Ch.1: LLM SDKs & utilities
+pip install -r Chapter2/requirements.txt   # Ch.2: + LangChain ecosystem
+pip install -r Chapter3/requirements.txt   # Ch.3: + Transformers & RAG
+pip install -r Chapter4/requirements.txt   # Ch.4: + LangGraph & web search
+pip install -r Chapter5/SimpleChatAgent/AganticAssistant/requirements.txt  # Ch.5: + MCP client
+pip install -r Chapter5/SimpleChatAgent/McpServer/requirements.txt          # Ch.5: + MCP server
 ```
 
 ### 4. Configuration

@@ -1,0 +1,102 @@
+# =============================================================================
+# Agentic AI Tutorial — Full Combined Requirements
+# =============================================================================
+# Install everything in one shot:
+#   pip install -r requirements.txt
+#
+# Or install per-chapter using the individual requirements files:
+#   Chapter 1  →  Chapter1/requirements.txt
+#   Chapter 2  →  Chapter2/requirements.txt
+#   Chapter 3  →  Chapter3/requirements.txt
+#   Chapter 4  →  Chapter4/requirements.txt
+#   Chapter 5  →  Chapter5/SimpleChatAgent/AganticAssistant/requirements.txt
+#              →  Chapter5/SimpleChatAgent/McpServer/requirements.txt
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 🔑 LLM Provider SDKs
+# Used in: ALL chapters
+# Direct Python clients for OpenAI (GPT-3.5/4o), Google Gemini, and Ollama
+# (local models). Chapter 1 is the first to use them bare — no LangChain.
+# -----------------------------------------------------------------------------
+openai
+google-genai
+ollama
+
+
+# -----------------------------------------------------------------------------
+# 🔧 Shared Utilities
+# Used in: ALL chapters
+# - python-dotenv  → loads .env files for API key management
+# - pydantic       → data validation / structured outputs from LLMs
+# - tiktoken       → OpenAI token counting for prompt budgeting
+# -----------------------------------------------------------------------------
+python-dotenv
+pydantic
+tiktoken
+
+
+# -----------------------------------------------------------------------------
+# 🦜 LangChain Ecosystem
+# Used in: Chapters 2, 3, 4, 5
+# Core orchestration framework. Provides chains, agents, tool-calling,
+# memory, and LCEL (LangChain Expression Language). Provider integrations
+# (OpenAI, Gemini, Ollama) sit on top of langchain-core.
+# -----------------------------------------------------------------------------
+langchain
+langchain-core
+langchain-openai
+langchain-google-genai
+langchain-ollama
+langchain-community
+
+
+# -----------------------------------------------------------------------------
+# 🤗 Transformers & Embeddings
+# Used in: Chapters 3, 4, 5
+# HuggingFace transformers pipeline + sentence-transformers for local
+# embeddings used in RAG (Retrieval-Augmented Generation) and vector search.
+# -----------------------------------------------------------------------------
+transformers
+sentence-transformers
+
+
+# -----------------------------------------------------------------------------
+# 🕸️ LangGraph & Visualization
+# Used in: Chapters 4, 5
+# LangGraph extends LangChain with stateful, cyclical graph-based agents.
+# graphviz renders the agent graph as a PNG for documentation and debugging.
+# -----------------------------------------------------------------------------
+langgraph
+graphviz
+
+
+# -----------------------------------------------------------------------------
+# 🔍 Web Search
+# Used in: Chapter 4
+# DuckDuckGo Search (ddgs) gives agents real-time internet access without
+# requiring an API key — useful for research and ReAct agent patterns.
+# -----------------------------------------------------------------------------
+ddgs
+
+
+# -----------------------------------------------------------------------------
+# 🔌 MCP (Model Context Protocol) — Chapter 5 only
+# Used in: Chapter 5 (AganticAssistant + McpServer)
+# FastMCP is the Python SDK for Anthropic's Model Context Protocol.
+# httpx is the async HTTP client used internally by the MCP SSE transport.
+# The MCP server exposes Math and Email tools over Server-Sent Events (SSE),
+# which the LangGraph agent consumes without direct function access.
+# -----------------------------------------------------------------------------
+mcp[cli]
+httpx
+
+
+# -----------------------------------------------------------------------------
+# 🧪 Testing (Chapter 5 CI)
+# Used in: Chapter 5 tests + GitHub Actions CI pipeline
+# pytest is the test runner. The custom conftest.py adds real-time per-test
+# logging and module-level summaries.
+# -----------------------------------------------------------------------------
+pytest
