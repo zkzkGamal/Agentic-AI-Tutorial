@@ -11,7 +11,9 @@ ollama
 # Utilities
 python-dotenv                 
 pydantic               
-tiktoken                      
+tiktoken         
+environ
+django-environ             
 
 #langchain
 langchain
@@ -32,5 +34,3 @@ graphviz
 
 #web search
 ddgs
-environ
-django-environ

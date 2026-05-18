@@ -32,5 +32,3 @@ graphviz
 
 #web search
 ddgs
-environ
-django-environ
