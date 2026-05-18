@@ -125,6 +125,23 @@ cp Chapter1/.env.example Chapter1/.env
 - Routing requests intelligently across multiple highly-specialized LangGraph nodes.
 - Handling multi-turn state cleanly between Router, Execution, and Summary nodes.
 
+### Chapter 5 Demo: See Agentic Workflow in Action
+
+This chapter includes a live demo of the multi-node assistant handling different intents:
+ - **Conversation** routed to a chitchat node
+ - **Math requests** executed by the MCP tool server
+ - **Email composition and sending** via a secure tool layer
+
+Sample interaction:
+```text
+User: "Please add 42 and 17, then send the result to my email."
+Router: detects math + tool request
+Execute: calls MCP Math tool, then MCP Email tool
+Summarize: returns a human-friendly response with results and confirmation
+```
+
+Read more in the Chapter 5 guide and view the demo flow: [Chapter 5 Demo](./Chapter5/SimpleChatAgent/README.md)
+
 ---
 
 ## 🔗 Related Repositories
