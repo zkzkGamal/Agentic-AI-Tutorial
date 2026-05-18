@@ -100,3 +100,5 @@ httpx
 # logging and module-level summaries.
 # -----------------------------------------------------------------------------
 pytest
+environ
+django-environ
