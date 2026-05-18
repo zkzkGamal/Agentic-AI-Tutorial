@@ -15,8 +15,15 @@ from langchain_core.messages import HumanMessage
 
 import importlib
 
-router_module = importlib.import_module("agent.nodes.router")
-summarize_module = importlib.import_module("agent.nodes.summarize")
+router_module = None
+summarize_module = None
+
+
+def setup_module(module):
+    global router_module, summarize_module
+    router_module = importlib.import_module("agent.nodes.router")
+    summarize_module = importlib.import_module("agent.nodes.summarize")
+
 
 
 class DummyResponse:
