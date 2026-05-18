@@ -2,3 +2,7 @@
 __pycache__/
 chapter_env/
 venv/
+.vscode/
+.idea/
+*.pyc
+.pytest_cache/

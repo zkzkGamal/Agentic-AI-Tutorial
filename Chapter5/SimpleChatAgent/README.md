@@ -107,6 +107,17 @@ In your main terminal, start the interactive assistant CLI:
 python3 Chapter5/SimpleChatAgent/AganticAssistant/main.py
 ```
 
+## ✅ Automated Tests
+
+Chapter 5 now includes automated tests for the MCP math tools and LangGraph node logic.
+Run them locally after installing dependencies:
+
+```bash
+cd Chapter5/SimpleChatAgent
+python3 -m pip install pytest
+pytest tests
+```
+
 ---
 
 ## 📸 Demos and Features

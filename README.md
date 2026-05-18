@@ -124,6 +124,7 @@ cp Chapter1/.env.example Chapter1/.env
 - Deploying a local FastMCP Server with Mail and Math tools.
 - Routing requests intelligently across multiple highly-specialized LangGraph nodes.
 - Handling multi-turn state cleanly between Router, Execution, and Summary nodes.
+- Includes automated CI tests for Chapter 5 tool and node behavior.
 
 ### Chapter 5 Demo: See Agentic Workflow in Action
 

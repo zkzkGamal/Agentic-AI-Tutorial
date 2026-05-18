@@ -77,9 +77,15 @@ def build_graph(checkpointer=None):
 # ── Default compiled graph (with in-memory checkpointer for multi-turn) ──────
 memory = MemorySaver()
 graph = build_graph(checkpointer=memory)
-from IPython.display import Image
+from pathlib import Path
 
-png_bytes = graph.get_graph().draw_mermaid_png()
 
-with open("Chapter5/SimpleChatAgent/AganticAssistant/graph.png", "wb") as f:
-    f.write(png_bytes)
+def export_graph_png(output_path=None):
+    if output_path is None:
+        output_path = Path(__file__).resolve().parent.parent / "graph.png"
+    png_bytes = graph.get_graph().draw_mermaid_png()
+    output_path.write_bytes(png_bytes)
+
+
+if __name__ == "__main__":
+    export_graph_png()
