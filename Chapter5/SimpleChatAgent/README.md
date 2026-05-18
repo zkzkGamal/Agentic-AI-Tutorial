@@ -107,16 +107,27 @@ In your main terminal, start the interactive assistant CLI:
 python3 Chapter5/SimpleChatAgent/AganticAssistant/main.py
 ```
 
-## ✅ Automated Tests
+## ✅ Automated Testing & GitHub CI Actions
 
-Chapter 5 now includes automated tests for the MCP math tools and LangGraph node logic.
-Run them locally after installing dependencies:
+Chapter 5 features a robust, real-time automated test suite verifying both the standalone MCP tools and the LangGraph node logic.
+
+### ⚡ Real-Time Pytest Feedback
+Our test suite is customized via `conftest.py` with instant test collection and unbuffered real-time execution logging. You get immediate visual feedback on every test as it runs:
 
 ```bash
 cd Chapter5/SimpleChatAgent
 python3 -m pip install pytest
 pytest tests
 ```
+
+### 🤖 GitHub Actions CI Pipeline
+This repository includes automated Continuous Integration via GitHub Actions (`.github/workflows/chapter5-ci.yml`). Every push or pull request modifying Chapter 5 code automatically triggers the test suite across multiple Python versions (3.10 and 3.11) on Ubuntu runners.
+
+### 🛡️ Why Automated Testing is Critical for Agentic AI
+Testing standard software is straightforward because functions are deterministic. In **Agentic AI**, automated testing and CI pipelines are absolutely vital for several reasons:
+1. **Validating LLM Intent Routing**: Models can be sensitive to slight prompt variations. Our tests verify that the Router node consistently and accurately classifies varied user inputs (e.g., math vs. chitchat) into the correct intent buckets without hallucinations.
+2. **Strict Tool Contracts**: The MCP server exposes specific tool schemas. Unit tests ensure that parameter parsing (handling lists, kwargs, or empty values) behaves flawlessly before passing sensitive data between the LLM and external system tools.
+3. **Prompt & Model Upgrade Resilience**: When upgrading underlying foundation models (e.g., switching from GPT-3.5 to GPT-4o or local Llama models), automated CI pipelines guarantee that changes in model output formatting don't break downstream extraction or state graph transitions.
 
 ---
 

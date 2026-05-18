@@ -124,7 +124,7 @@ cp Chapter1/.env.example Chapter1/.env
 - Deploying a local FastMCP Server with Mail and Math tools.
 - Routing requests intelligently across multiple highly-specialized LangGraph nodes.
 - Handling multi-turn state cleanly between Router, Execution, and Summary nodes.
-- Includes automated CI tests for Chapter 5 tool and node behavior.
+- **Real-Time Automated Testing & GitHub Actions CI**: Features unbuffered real-time test execution and continuous integration via GitHub Actions (`.github/workflows/chapter5-ci.yml`). Automated testing is essential in Agentic AI to verify non-deterministic LLM intent routing, validate precise MCP tool schemas/contracts, and guarantee pipeline resilience when upgrading underlying foundation models.
 
 ### Chapter 5 Demo: See Agentic Workflow in Action
 
