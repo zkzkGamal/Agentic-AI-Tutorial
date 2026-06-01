@@ -195,7 +195,7 @@ Implements a decoupled agent runtime with a LangGraph assistant and MCP server. 
 **Zkaria Gamal - AI Engineer**
 
 - GitHub: [@zkzkGamal](https://github.com/zkzkGamal)
-- LinkedIn: [Zkaria Gamal](https://www.linkedin.com/in/zkaria-gamal/)
+- LinkedIn: [Zkaria Gamal](https://www.linkedin.com/in/zkaria-gamal-82b486267/)
 
 ## License
 
